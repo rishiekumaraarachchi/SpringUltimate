@@ -15,4 +15,9 @@ public class FirstController {
     public String post(@RequestBody String message) {
         return "Post request has been made!" + message;
     }
+
+    @PostMapping("/post-order")
+    public String post(@RequestBody Orders order) {
+        return "Order has been placed!" + order.toString();
+    }
 }
