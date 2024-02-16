@@ -1,36 +1,50 @@
 package com.example.springultimate;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class FirstController {
-   // @GetMapping("/hello")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public String hello() {
-        return "Hello, World!";
+private final StudentRepository studentRepository;
+
+    public FirstController(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 
-    @PostMapping("/post")
-    public String post(@RequestBody String message) {
-        return "Post request has been made!" + message;
+    @PostMapping("/students")
+    public Student post(@RequestBody Student student) {
+        return  studentRepository.save(student);
+    }
+
+    @GetMapping("/students")
+
+    public List<Student> findAllStudents() {
+        return studentRepository.findAll();
+    }
+
+    @GetMapping("/students/{id}")
+
+    public Student findSingleStudents(
+            @PathVariable("id") Integer id
+    ) {
+        return studentRepository.findById(id).orElse(null);
     }
 
 
+    @GetMapping("/students/search/{name}")
 
-    @PostMapping("/post-order")
-    public String post(@RequestBody Orders order) {
-        return "Order has been placed!" + order.toString();
+    public List<Student> findByFirstname(
+            @PathVariable("name") String name
+    ) {
+        return studentRepository.findAllByFirstnameContaining(name);
     }
 
-
-    @GetMapping("/hello/{userName}")
-    public String pathVariable(@PathVariable String userName) {
-        return "Hello, " + userName + "!";
+    @DeleteMapping("/students/{id}")
+    public void deleteStudent(
+            @PathVariable("id") Integer id
+    ) {
+        studentRepository.deleteById(id);
     }
 
-    @GetMapping("/hello")
-    public String requestParam(@RequestParam("user-name") String userName, @RequestParam("age") int age) {
-           return "Hello, " + userName + "! You are " + age + " years old.";
-    }
 }

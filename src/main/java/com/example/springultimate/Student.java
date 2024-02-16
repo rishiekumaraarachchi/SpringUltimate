@@ -1,14 +1,17 @@
 package com.example.springultimate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "t_students")
 public class Student {
     @Id
+    @GeneratedValue
     private Integer id;
+    @Column(name = "first_name", length = 50, nullable = false)
     private String firstname;
     private String lastname;
+    @Column(unique = true)
     private String email;
     private int age;
 
