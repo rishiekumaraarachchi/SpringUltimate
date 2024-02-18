@@ -5,16 +5,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class FirstController {
-private final StudentRepository studentRepository;
+public class StudentController {
+    private final StudentRepository studentRepository;
+    private final StudentMapper studentMapper;
 
-    public FirstController(StudentRepository studentRepository) {
+    public StudentController(StudentRepository studentRepository, StudentMapper studentMapper) {
         this.studentRepository = studentRepository;
+        this.studentMapper = studentMapper;
+
     }
 
     @PostMapping("/students")
-    public Student post(@RequestBody Student student) {
-        return  studentRepository.save(student);
+    public StudentResponseDto post(@RequestBody StudentDto studentDto) {
+        var student = studentMapper.toStudent(studentDto);
+        var savedStudent = studentRepository.save(student);
+        return studentMapper.toStudentResponseDto(savedStudent);
     }
 
     @GetMapping("/students")
