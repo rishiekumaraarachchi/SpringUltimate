@@ -1,5 +1,6 @@
-package com.example.springultimate;
+package com.example.springultimate.StudentProfile;
 
+import com.example.springultimate.Student.Student;
 import jakarta.persistence.*;
 
 @Entity

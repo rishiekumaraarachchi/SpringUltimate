@@ -1,5 +1,7 @@
-package com.example.springultimate;
+package com.example.springultimate.Student;
 
+import com.example.springultimate.StudentProfile.StudentProfile;
+import com.example.springultimate.school.School;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 

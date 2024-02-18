@@ -1,5 +1,6 @@
-package com.example.springultimate;
+package com.example.springultimate.school;
 
+import com.example.springultimate.Student.Student;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

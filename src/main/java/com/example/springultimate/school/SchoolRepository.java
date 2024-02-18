@@ -1,4 +1,4 @@
-package com.example.springultimate;
+package com.example.springultimate.school;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

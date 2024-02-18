@@ -1,5 +1,6 @@
-package com.example.springultimate;
+package com.example.springultimate.Student;
 
+import com.example.springultimate.school.School;
 import org.springframework.stereotype.Service;
 
 @Service
