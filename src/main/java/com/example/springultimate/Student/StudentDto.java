@@ -1,5 +1,13 @@
 package com.example.springultimate.Student;
 
-public record StudentDto( String firstname, String lastname, String email, Integer schoolId) {
+import jakarta.validation.constraints.NotEmpty;
+
+public record StudentDto(
+        @NotEmpty(message = "First name is required")
+        String firstname,
+        String lastname,
+        @NotEmpty (message = "Email is required")
+        String email,
+        Integer schoolId) {
 
 }
